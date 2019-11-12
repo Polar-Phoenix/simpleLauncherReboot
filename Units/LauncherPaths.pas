@@ -1,7 +1,7 @@
 unit LauncherPaths;
 (*
- *  Пути к клиенту, настройкам и appdata
- *  Написано для simpleLauncher
+ *  РџСѓС‚Рё Рє РєР»РёРµРЅС‚Сѓ, РЅР°СЃС‚СЂРѕР№РєР°Рј Рё appdata
+ *  РќР°РїРёСЃР°РЅРѕ РґР»СЏ simpleLauncher
  *  (c) saharNooby 2014
  *)
 interface

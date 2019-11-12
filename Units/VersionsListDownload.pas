@@ -35,8 +35,8 @@ procedure ShowError(const Msg: string; const E: Exception);
 begin
   MessageBox(
     LauncherForm.Handle,
-    PWideChar(Msg + #10#10 + 'Текст ошибки: ' + E.Message),
-    PWideChar('Не удалось получить список...'),
+    PWideChar(Msg + #10#10 + 'РўРµРєСЃС‚ РѕС€РёР±РєРё: ' + E.Message),
+    PWideChar('РќРµ СѓРґР°Р»РѕСЃСЊ РїРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє...'),
     MB_ICONERROR + MB_OK
   );
 end;
@@ -110,12 +110,12 @@ end;
 
 procedure ShowNews(Old, New: ISuperObject);
 const
-  NewRel = 'Релиз %s';
-  NewSnap = 'Снапшот %s';
-  MsgText = 'С момента последнего обновления списка версий вышли следующие ве' +
-    'рсии:'#10#10'%s'#10#10'Можно загрузить эти версии, перейдя на вкладку "З' +
-    'агрузка версий"';
-  MsgCaption = 'Вышли новые версии!';
+  NewRel = 'Р РµР»РёР· %s';
+  NewSnap = 'РЎРЅР°РїС€РѕС‚ %s';
+  MsgText = 'РЎ РјРѕРјРµРЅС‚Р° РїРѕСЃР»РµРґРЅРµРіРѕ РѕР±РЅРѕРІР»РµРЅРёСЏ СЃРїРёСЃРєР° РІРµСЂСЃРёР№ РІС‹С€Р»Рё СЃР»РµРґСѓСЋС‰РёРµ РІРµ' +
+    'СЂСЃРёРё:'#10#10'%s'#10#10'РњРѕР¶РЅРѕ Р·Р°РіСЂСѓР·РёС‚СЊ СЌС‚Рё РІРµСЂСЃРёРё, РїРµСЂРµР№РґСЏ РЅР° РІРєР»Р°РґРєСѓ "Р—' +
+    'Р°РіСЂСѓР·РєР° РІРµСЂСЃРёР№"';
+  MsgCaption = 'Р’С‹С€Р»Рё РЅРѕРІС‹Рµ РІРµСЂСЃРёРё!';
 var
   MessageText, NewText, OldS, OldR, NewS, NewR: String;
 begin
@@ -180,7 +180,7 @@ end;
 
 procedure AddLastVersion(const ID: String; const L: TStringList);
 const
-  LastString = 'Последний (%s)';
+  LastString = 'РџРѕСЃР»РµРґРЅРёР№ (%s)';
 begin
   L.AddObject(Format(LastString, [ID]), TVanillaVersion.Create(ID));
 end;
@@ -207,12 +207,12 @@ begin
       begin
         StringList.AddObject(Id, TVanillaVersion.Create(Id));
 
-        // Добавление OptiFine-версии
+        // Р”РѕР±Р°РІР»РµРЅРёРµ OptiFine-РІРµСЂСЃРёРё
 
         if Assigned(List.O['optifine'].O[Id]) then
           StringList.AddObject(Id + ' OptiFine',TOptiFineVersion.Create(Id));
 
-        // Добавление версии с LiteLoader
+        // Р”РѕР±Р°РІР»РµРЅРёРµ РІРµСЂСЃРёРё СЃ LiteLoader
 
         if Assigned(List.O['liteloader'].O[Id]) then
           StringList.AddObject(Id + ' LiteLoader',
@@ -225,7 +225,7 @@ begin
               .O['latest'])
           );
 
-        // Добавление версии с LL о OF
+        // Р”РѕР±Р°РІР»РµРЅРёРµ РІРµСЂСЃРёРё СЃ LL Рѕ OF
 
         if (List.O['optifine'].O[Id] <> nil) and (List.O['liteloader'].O[Id] <> nil) then
           StringList.AddObject(Id + ' LiteLoader OptiFine',
