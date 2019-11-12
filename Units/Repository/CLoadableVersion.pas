@@ -4,7 +4,7 @@ unit CLoadableVersion;
 interface
 
 type
-    // Класс для взаимодействия с любыми версиями
+    // РљР»Р°СЃСЃ РґР»СЏ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ СЃ Р»СЋР±С‹РјРё РІРµСЂСЃРёСЏРјРё
 
     TLoadableVersion = class
     protected

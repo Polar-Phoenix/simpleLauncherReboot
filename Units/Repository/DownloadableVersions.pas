@@ -6,7 +6,7 @@ uses
   SuperObject;
 
 type
-  // Класс для взаимодействия с любыми версиями
+  // РљР»Р°СЃСЃ РґР»СЏ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ СЃ Р»СЋР±С‹РјРё РІРµСЂСЃРёСЏРјРё
 
   TLoadableVersion = class
   protected
@@ -52,7 +52,7 @@ uses
 function ErrorDlg(const Msg: string): Integer;
 begin
   Result := MessageBox(LauncherForm.Handle, PChar(Msg),
-    PChar('Ошибка загрузки'), MB_ICONERROR + MB_YESNO)
+    PChar('РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё'), MB_ICONERROR + MB_YESNO)
 end;
 
 procedure EasyDl(const AURL, APath: String);
@@ -119,7 +119,7 @@ begin
 
   LibObj := SO(Format('{"name":"optifine:OptiFine:%s"}', [FSourceId]));
 
-  // Загрузка библиотеки OptiFine
+  // Р—Р°РіСЂСѓР·РєР° Р±РёР±Р»РёРѕС‚РµРєРё OptiFine
   Lib := TMinecraftLib.Create(LibObj);
   ForceDirectories(Lib.Dir);
   EasyDl(URLs.OptiFineLib(FSourceId), Lib.Path);
@@ -128,15 +128,15 @@ begin
   Obj := TSuperObject.ParseFile(Paths.json(FId), False);
   with Obj do
   begin
-    // Меняем id
+    // РњРµРЅСЏРµРј id
     S['id'] := FId;
-    // Добавляем tweakClass-аргумент
+    // Р”РѕР±Р°РІР»СЏРµРј tweakClass-Р°СЂРіСѓРјРµРЅС‚
     S['minecraftArguments'] := S['minecraftArguments'] + ' --tweakClass optifine.OptiFineTweaker';
-    // Добавляем имя библиотеки OptiFIne
+    // Р”РѕР±Р°РІР»СЏРµРј РёРјСЏ Р±РёР±Р»РёРѕС‚РµРєРё OptiFIne
     A['libraries'].Add(LibObj);
-    // Добавляем имя библиотеки LaunchWrapper
+    // Р”РѕР±Р°РІР»СЏРµРј РёРјСЏ Р±РёР±Р»РёРѕС‚РµРєРё LaunchWrapper
     A['libraries'].Add(SO('{"name":"net.minecraft:launchwrapper:1.7"}'));
-    // Меняем главный класс
+    // РњРµРЅСЏРµРј РіР»Р°РІРЅС‹Р№ РєР»Р°СЃСЃ
     S['mainClass'] := 'net.minecraft.launchwrapper.Launch';
     SaveTo(Paths.json(FId), True);
   end;
@@ -166,18 +166,18 @@ begin
   Obj := TSuperObject.ParseFile(Paths.json(FId), False);
   with Obj do
   begin
-    // Меняем id
+    // РњРµРЅСЏРµРј id
     S['id'] := FId;
-    // Добавляем tweakClass-аргумент
+    // Р”РѕР±Р°РІР»СЏРµРј tweakClass-Р°СЂРіСѓРјРµРЅС‚
     S['minecraftArguments'] := S['minecraftArguments'] + ' --tweakClass ' + FArtefact.S['tweakClass'];
-    // Сливаем ванильные библиотеки с нужными
+    // РЎР»РёРІР°РµРј РІР°РЅРёР»СЊРЅС‹Рµ Р±РёР±Р»РёРѕС‚РµРєРё СЃ РЅСѓР¶РЅС‹РјРё
     if FArtefact.B['merge'] then
       O['libraries'].Merge(FArtefact.O['libraries'])
     else
       O['libraries'] := FArtefact.O['libraries'];
-    // Добавляем библиотеку LiteLoader
+    // Р”РѕР±Р°РІР»СЏРµРј Р±РёР±Р»РёРѕС‚РµРєСѓ LiteLoader
     A['libraries'].Add(Lib);
-    // Меняем главный класс
+    // РњРµРЅСЏРµРј РіР»Р°РІРЅС‹Р№ РєР»Р°СЃСЃ
     S['mainClass'] := 'net.minecraft.launchwrapper.Launch';
     SaveTo(Paths.json(FId), True);
   end;
@@ -206,7 +206,7 @@ begin
 
   LibObj := SO(Format('{"name":"optifine:OptiFine:%s"}', [FSourceId]));
 
-  // Загрузка библиотеки OptiFine
+  // Р—Р°РіСЂСѓР·РєР° Р±РёР±Р»РёРѕС‚РµРєРё OptiFine
   Lib := TMinecraftLib.Create(LibObj);
   ForceDirectories(Lib.Dir);
   EasyDl(URLs.OptiFineLib(FSourceId), Lib.Path);
@@ -215,20 +215,20 @@ begin
   Obj := TSuperObject.ParseFile(Paths.json(FId), False);
   with Obj do
   begin
-    // Меняем id
+    // РњРµРЅСЏРµРј id
     S['id'] := FId;
-    // Добавляем tweakClass-аргумент
+    // Р”РѕР±Р°РІР»СЏРµРј tweakClass-Р°СЂРіСѓРјРµРЅС‚
     S['minecraftArguments'] := S['minecraftArguments'] + ' --tweakClass com.mumfrey.liteloader.launch.LiteLoaderTweaker';
-    // Сливаем ванильные библиотеки с нужными
+    // РЎР»РёРІР°РµРј РІР°РЅРёР»СЊРЅС‹Рµ Р±РёР±Р»РёРѕС‚РµРєРё СЃ РЅСѓР¶РЅС‹РјРё
     if FArtefact.B['merge'] then
       O['libraries'].Merge(FArtefact.O['libraries'])
     else
       O['libraries'] := FArtefact.O['libraries'];
-    // Добавляем имя библиотеки OptiFIne
+    // Р”РѕР±Р°РІР»СЏРµРј РёРјСЏ Р±РёР±Р»РёРѕС‚РµРєРё OptiFIne
     A['libraries'].Add(LibObj);
-    // Добавляем библиотеку LiteLoader
+    // Р”РѕР±Р°РІР»СЏРµРј Р±РёР±Р»РёРѕС‚РµРєСѓ LiteLoader
     A['libraries'].Add(LiteLib);
-    // Меняем главный класс
+    // РњРµРЅСЏРµРј РіР»Р°РІРЅС‹Р№ РєР»Р°СЃСЃ
     S['mainClass'] := 'net.minecraft.launchwrapper.Launch';
     SaveTo(Paths.json(FId), True);
   end;
