@@ -102,8 +102,8 @@ begin
     LogF(Self, 'Validating assets for version %s, Force = %s',
       [MCVer, Force.ToString]);
 
-    // Получаем данные о версии
-    // О наличии json-файла версии должны заботиться методы выше по стеку
+    // РџРѕР»СѓС‡Р°РµРј РґР°РЅРЅС‹Рµ Рѕ РІРµСЂСЃРёРё
+    // Рћ РЅР°Р»РёС‡РёРё json-С„Р°Р№Р»Р° РІРµСЂСЃРёРё РґРѕР»Р¶РЅС‹ Р·Р°Р±РѕС‚РёС‚СЊСЃСЏ РјРµС‚РѕРґС‹ РІС‹С€Рµ РїРѕ СЃС‚РµРєСѓ
     if not ExtParse(Paths.json(MCVer), @Obj) then
       Exit
     else
@@ -112,7 +112,7 @@ begin
       else
         FIndexName := Obj.S['assets'];
 
-    // Парсинг индекс-файла и его загрузка, если отсутствует
+    // РџР°СЂСЃРёРЅРі РёРЅРґРµРєСЃ-С„Р°Р№Р»Р° Рё РµРіРѕ Р·Р°РіСЂСѓР·РєР°, РµСЃР»Рё РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚
     try
       ParseIndex;
     except
@@ -122,7 +122,7 @@ begin
     ObjectsEnum := FIndex.O['objects'].AsObject.GetEnumerator;
     ObjectsEnum.First;
 
-    // Пробегаемся по каждому ресурсу
+    // РџСЂРѕР±РµРіР°РµРјСЃСЏ РїРѕ РєР°Р¶РґРѕРјСѓ СЂРµСЃСѓСЂСЃСѓ
     repeat
       ValidateAsset(FIndex.B['virtual'], ObjectsEnum.Current);
     until not ObjectsEnum.MoveNext;
@@ -149,7 +149,7 @@ begin
   ObjDir := Paths.Client + 'assets\objects\' + Hash[1] + Hash[2] + '\';
   ObjPath := ObjDir + Hash;
 
-  // Если файл отсутствует или форсрованная загрузка включена
+  // Р•СЃР»Рё С„Р°Р№Р» РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚ РёР»Рё С„РѕСЂСЃСЂРѕРІР°РЅРЅР°СЏ Р·Р°РіСЂСѓР·РєР° РІРєР»СЋС‡РµРЅР°
   if FForce or not FileExists(ObjPath) then
   begin
     FillChar(Data, SizeOf(Data), #0);
@@ -157,13 +157,13 @@ begin
     Data.URL := URLs.Asset(Hash);
     Data.FileName := ObjPath;
     Data.Notify := True;
-    for TryNum := 1 to TryCnt do // Попытки закачать ресурс
+    for TryNum := 1 to TryCnt do // РџРѕРїС‹С‚РєРё Р·Р°РєР°С‡Р°С‚СЊ СЂРµСЃСѓСЂСЃ
     begin
       LogF(Self, StrLogTryDownloadAsset, [TryNum, TryCnt, Hash]);
       try
         ForceDirectories(ObjDir);
         Download(Data);
-        // При успешной загрузке сверяем хэши
+        // РџСЂРё СѓСЃРїРµС€РЅРѕР№ Р·Р°РіСЂСѓР·РєРµ СЃРІРµСЂСЏРµРј С…СЌС€Рё
         RealHash := GetSHA1(ObjPath);
         if RealHash = Hash then
           Break;
@@ -179,7 +179,7 @@ begin
     end;
   end;
 
-  // Если успешно загружен ресурс (или был уже) и нужно мигрировать
+  // Р•СЃР»Рё СѓСЃРїРµС€РЅРѕ Р·Р°РіСЂСѓР¶РµРЅ СЂРµСЃСѓСЂСЃ (РёР»Рё Р±С‹Р» СѓР¶Рµ) Рё РЅСѓР¶РЅРѕ РјРёРіСЂРёСЂРѕРІР°С‚СЊ
   if FileExists(ObjPath) and Migr then
     MigrateAsset(ObjPath, Asset);
 end;

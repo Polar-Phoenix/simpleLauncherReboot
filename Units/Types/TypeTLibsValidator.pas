@@ -67,7 +67,7 @@ var
   Hash: String;
   Data: TDownloadData;
 begin
-  // Хэш валиден ЕСЛИ он существует И сколько-там hex символов ИНАЧЕ скачать
+  // РҐСЌС€ РІР°Р»РёРґРµРЅ Р•РЎР›Р РѕРЅ СЃСѓС‰РµСЃС‚РІСѓРµС‚ Р СЃРєРѕР»СЊРєРѕ-С‚Р°Рј hex СЃРёРјРІРѕР»РѕРІ РРќРђР§Р• СЃРєР°С‡Р°С‚СЊ
   if FForce or not Lib.IsValidHash(Hash) then
   begin
     Log(Self, 'Downloading hash...');

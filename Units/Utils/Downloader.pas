@@ -7,13 +7,13 @@ uses
 
 type
   TDownloadData = packed record
-    WndHandle   : THandle;  { Хэндл формы для отправки сообщений }
-    URL         : String;   { Ссылка на загрузку }
-    FileName    : String;   { Имя файла для сохранения }
-    Speed       : Single;   { Скорость загрузки (б/с) }
-    FileSize    : Cardinal; { Размер файла в байтах (заполняется загрузчиком) }
-    Downloaded  : Cardinal; { Сколько байт уже загружено }
-    Notify      : Boolean;  { Уведомлять ли о том, что загружается файл }
+    WndHandle   : THandle;  { РҐСЌРЅРґР» С„РѕСЂРјС‹ РґР»СЏ РѕС‚РїСЂР°РІРєРё СЃРѕРѕР±С‰РµРЅРёР№ }
+    URL         : String;   { РЎСЃС‹Р»РєР° РЅР° Р·Р°РіСЂСѓР·РєСѓ }
+    FileName    : String;   { РРјСЏ С„Р°Р№Р»Р° РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ }
+    Speed       : Single;   { РЎРєРѕСЂРѕСЃС‚СЊ Р·Р°РіСЂСѓР·РєРё (Р±/СЃ) }
+    FileSize    : Cardinal; { Р Р°Р·РјРµСЂ С„Р°Р№Р»Р° РІ Р±Р°Р№С‚Р°С… (Р·Р°РїРѕР»РЅСЏРµС‚СЃСЏ Р·Р°РіСЂСѓР·С‡РёРєРѕРј) }
+    Downloaded  : Cardinal; { РЎРєРѕР»СЊРєРѕ Р±Р°Р№С‚ СѓР¶Рµ Р·Р°РіСЂСѓР¶РµРЅРѕ }
+    Notify      : Boolean;  { РЈРІРµРґРѕРјР»СЏС‚СЊ Р»Рё Рѕ С‚РѕРј, С‡С‚Рѕ Р·Р°РіСЂСѓР¶Р°РµС‚СЃСЏ С„Р°Р№Р» }
   end;
 
 var
@@ -78,7 +78,7 @@ var
   TicksFreq, TicksBefore, TicksAfter: Int64;
   TimeElapsed: Single;
 begin
-  // Сообщение о начале загрузки
+  // РЎРѕРѕР±С‰РµРЅРёРµ Рѕ РЅР°С‡Р°Р»Рµ Р·Р°РіСЂСѓР·РєРё
   SendMessage(Data.WndHandle, 1024 + $1, 0, LongWord(@Data));
   SetOnline;
   NowDownloading := Data.Notify;
@@ -92,7 +92,7 @@ begin
       Data.FileSize := StrToInt(GetQueryInfo(hURL, HTTP_QUERY_CONTENT_LENGTH));
     except
       on EConvertError do
-        // Переопределение сообщения
+        // РџРµСЂРµРѕРїСЂРµРґРµР»РµРЅРёРµ СЃРѕРѕР±С‰РµРЅРёСЏ
         raise Exception.Create('Server didn''t responded content length!');
       on Exception do
         raise;
@@ -102,7 +102,7 @@ begin
       Code := StrToInt(GetQueryInfo(hURL, HTTP_QUERY_STATUS_CODE));
     except
       on EConvertError do
-        // Переопределение сообщения
+        // РџРµСЂРµРѕРїСЂРµРґРµР»РµРЅРёРµ СЃРѕРѕР±С‰РµРЅРёСЏ
         raise Exception.Create('Server didn''t responded status code!');
       on Exception do
         raise;
@@ -123,7 +123,7 @@ begin
           Data.Speed := Readed / TimeElapsed;
         Stream.Write(Buffer, Readed);
 
-        // Собщение о том, что часть файла загружена
+        // РЎРѕР±С‰РµРЅРёРµ Рѕ С‚РѕРј, С‡С‚Рѕ С‡Р°СЃС‚СЊ С„Р°Р№Р»Р° Р·Р°РіСЂСѓР¶РµРЅР°
         SendMessage(Data.WndHandle, 1024 + $2, 0, LongWord(@Data));
       end;
     until Readed = 0;
@@ -131,7 +131,7 @@ begin
   finally
     NowDownloading := False;
 
-    // Сообщение о том, что загрузка окончена
+    // РЎРѕРѕР±С‰РµРЅРёРµ Рѕ С‚РѕРј, С‡С‚Рѕ Р·Р°РіСЂСѓР·РєР° РѕРєРѕРЅС‡РµРЅР°
     SendMessage(Data.WndHandle, 1024 + $3, 0, LongWord(@Data));
 
     InternetCloseHandle(hURL);
@@ -148,7 +148,7 @@ var
   Buffer: array [1 .. BufferSize] of Byte;
   BufferLen: DWORD;
 begin
-  // Открытие хэндлов
+  // РћС‚РєСЂС‹С‚РёРµ С…СЌРЅРґР»РѕРІ
   hSession := InternetOpen(PChar('simpleLauncher'), 0, nil, nil, 0);
   hURL := InternetOpenURL(hSession, PChar(URL), nil, 0, $80000000, 0);
   try

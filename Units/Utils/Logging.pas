@@ -40,7 +40,7 @@ begin
   if Source <> nil then
     MsgStr := MsgStr + Format(SrcPrefix, [Source.ClassName]);
   MsgStr := MsgStr + ' ' + Msg;
-  // На всякий случай, чтобы не было проблем доступа
+  // РќР° РІСЃСЏРєРёР№ СЃР»СѓС‡Р°Р№, С‡С‚РѕР±С‹ РЅРµ Р±С‹Р»Рѕ РїСЂРѕР±Р»РµРј РґРѕСЃС‚СѓРїР°
   LogCritSection.Acquire;
   try
     SendMessage(LauncherForm.Handle, LM_LOG, 0, Integer(PChar(MsgStr)));

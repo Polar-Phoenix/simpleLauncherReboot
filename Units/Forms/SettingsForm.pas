@@ -116,7 +116,7 @@ begin
   OpenDialogStyle := TOpenDialog.Create(Fm_Settings);
   with OpenDialogStyle do
   try
-    Filter := 'Файл стилей|*.vsf|Другой файл|*';
+    Filter := 'Р¤Р°Р№Р» СЃС‚РёР»РµР№|*.vsf|Р”СЂСѓРіРѕР№ С„Р°Р№Р»|*';
     InitialDir := 'C:\';
     if Execute then
       if TStyleManager.IsValidStyle(FileName, SI) then
@@ -194,7 +194,7 @@ end;
 
 procedure TFm_Settings.ButtonResetClick(Sender: TObject);
 begin
-  if MessageDlg('Вы действительно хотите сбросить настройки?', mtWarning,
+  if MessageDlg('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СЃР±СЂРѕСЃРёС‚СЊ РЅР°СЃС‚СЂРѕР№РєРё?', mtWarning,
     mbOkCancel, 0) = mrOk then
   begin
     Settings.Reset;
@@ -219,8 +219,8 @@ end;
 
 procedure TFm_Settings.CheckBoxDontValidLibsClick(Sender: TObject);
 const
-  LibsWarning = 'Отключение этой опции может повредить игре (вплоть до незапу' +
-    'ска).'#13#10'Нажмите "OK", только если вы понимаете, что делаете.';
+  LibsWarning = 'РћС‚РєР»СЋС‡РµРЅРёРµ СЌС‚РѕР№ РѕРїС†РёРё РјРѕР¶РµС‚ РїРѕРІСЂРµРґРёС‚СЊ РёРіСЂРµ (РІРїР»РѕС‚СЊ РґРѕ РЅРµР·Р°РїСѓ' +
+    'СЃРєР°).'#13#10'РќР°Р¶РјРёС‚Рµ "OK", С‚РѕР»СЊРєРѕ РµСЃР»Рё РІС‹ РїРѕРЅРёРјР°РµС‚Рµ, С‡С‚Рѕ РґРµР»Р°РµС‚Рµ.';
 begin
   Settings.Profile.B['DontCheckLibraries'] := CheckBoxDontValidLibs.Checked;
   if not CheckBoxDontValidLibs.Checked then

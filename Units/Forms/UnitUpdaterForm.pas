@@ -106,22 +106,22 @@ var
 begin
   ZipPath := Paths.Updates + 'simpleLauncher.zip';
   try
-    // Загружаем архив по ссылке
+    // Р—Р°РіСЂСѓР¶Р°РµРј Р°СЂС…РёРІ РїРѕ СЃСЃС‹Р»РєРµ
     DownloadNewLauncher;
   except
     on E: Exception do
     begin
-      ShowMessage('Произошла ошибка при загрузке нового лаунчера.' + #10#10 + E.Message);
+      ShowMessage('РџСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР° РїСЂРё Р·Р°РіСЂСѓР·РєРµ РЅРѕРІРѕРіРѕ Р»Р°СѓРЅС‡РµСЂР°.' + #10#10 + E.Message);
       Exit;
     end;
   end;
   try
-    // Распаковываем лаунчер рядом и удаляем архив
+    // Р Р°СЃРїР°РєРѕРІС‹РІР°РµРј Р»Р°СѓРЅС‡РµСЂ СЂСЏРґРѕРј Рё СѓРґР°Р»СЏРµРј Р°СЂС…РёРІ
     ExtractNewLauncher;
   except
     on E: Exception do
     begin
-      ShowMessage('Произошла ошибка при распаковке нового лаунчера.' + #10#10 + E.Message);
+      ShowMessage('РџСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР° РїСЂРё СЂР°СЃРїР°РєРѕРІРєРµ РЅРѕРІРѕРіРѕ Р»Р°СѓРЅС‡РµСЂР°.' + #10#10 + E.Message);
       Exit;
     end;
   end;
@@ -130,7 +130,7 @@ begin
   except
     on E: Exception do
     begin
-      ShowMessage('Произошла ошибка при распаковке апдейтера.' + #10#10 + E.Message);
+      ShowMessage('РџСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР° РїСЂРё СЂР°СЃРїР°РєРѕРІРєРµ Р°РїРґРµР№С‚РµСЂР°.' + #10#10 + E.Message);
       Exit;
     end;
   end;

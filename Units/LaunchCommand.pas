@@ -6,7 +6,7 @@ uses
   SuperObject;
 
 type
-  // Опции для составления команды
+  // РћРїС†РёРё РґР»СЏ СЃРѕСЃС‚Р°РІР»РµРЅРёСЏ РєРѕРјР°РЅРґС‹
   TCommandOptions = packed record
     id,
     Memory,
@@ -152,15 +152,15 @@ end;
 
 procedure ShowMessage(const msg: String);
 const
-  Capt = 'Ошибка запуска';
+  Capt = 'РћС€РёР±РєР° Р·Р°РїСѓСЃРєР°';
 begin
   MessageBox(LauncherForm.Handle, PChar(msg), PChar(Capt), MB_ICONERROR);
 end;
 
 function GetLaunchCommand(Options: TCommandOptions): string;
 const
-  ErrorMessage = 'Не могу запустить версию %s, файл "%s", возможно, ' +
-    'повреждён. Попробуйте загрузить версию заново.';
+  ErrorMessage = 'РќРµ РјРѕРіСѓ Р·Р°РїСѓСЃС‚РёС‚СЊ РІРµСЂСЃРёСЋ %s, С„Р°Р№Р» "%s", РІРѕР·РјРѕР¶РЅРѕ, ' +
+    'РїРѕРІСЂРµР¶РґС‘РЅ. РџРѕРїСЂРѕР±СѓР№С‚Рµ Р·Р°РіСЂСѓР·РёС‚СЊ РІРµСЂСЃРёСЋ Р·Р°РЅРѕРІРѕ.';
 var
   Inherits: String;
   I: Integer;
@@ -168,14 +168,14 @@ begin
   if Options.id = '' then
     raise Exception.Create('"Options.Version" option is empty!');
 
-  // Парсим стандартный json
+  // РџР°СЂСЃРёРј СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ json
   if not ExtParse(Paths.json(Options.id), @Options.Version) then
   begin
     ShowMessage(Format(ErrorMessage, [Options.id, Paths.json(Options.id)]));
     Exit;
   end;
 
-  // Проверяем, а нет ли наcледования json?
+  // РџСЂРѕРІРµСЂСЏРµРј, Р° РЅРµС‚ Р»Рё РЅР°cР»РµРґРѕРІР°РЅРёСЏ json?
 
   Inherits := Options.Version.S['inheritsFrom'];
 
@@ -186,7 +186,7 @@ begin
       Exit;
     end
     else
-      // Если без ошибок, то объединяем
+      // Р•СЃР»Рё Р±РµР· РѕС€РёР±РѕРє, С‚Рѕ РѕР±СЉРµРґРёРЅСЏРµРј
       with Options do
       begin
         if (Parent.A['libraries'] <> nil) and (Version.A['libraries'] <> nil) then

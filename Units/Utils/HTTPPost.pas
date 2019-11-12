@@ -24,8 +24,8 @@ end;
 
 function sslPOSTA(const Server, URL, Data: AnsiString): AnsiString;
 const
-  StrCantSend = 'Не могу отправить запрос. Проверьте подключение к интернету.';
-  StrCantRead = 'Не могу считать данные, проверьте подключение к интернету!';
+  StrCantSend = 'РќРµ РјРѕРіСѓ РѕС‚РїСЂР°РІРёС‚СЊ Р·Р°РїСЂРѕСЃ. РџСЂРѕРІРµСЂСЊС‚Рµ РїРѕРґРєР»СЋС‡РµРЅРёРµ Рє РёРЅС‚РµСЂРЅРµС‚Сѓ.';
+  StrCantRead = 'РќРµ РјРѕРіСѓ СЃС‡РёС‚Р°С‚СЊ РґР°РЅРЅС‹Рµ, РїСЂРѕРІРµСЂСЊС‚Рµ РїРѕРґРєР»СЋС‡РµРЅРёРµ Рє РёРЅС‚РµСЂРЅРµС‚Сѓ!';
   Headers2: AnsiString =
     'User-Agent: simpleLauncher'#13#10 +
     'Content-Type: application/json'#13#10 +
