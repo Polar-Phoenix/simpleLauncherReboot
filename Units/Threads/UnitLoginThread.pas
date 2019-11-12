@@ -64,7 +64,7 @@ begin
       LogE(Self, E);
       Log(Self, 'Unable to login.');
       MessageBox(LauncherForm.Handle, PChar(LoginErrorMsg + E.Message),
-        PChar('Ошибка авторизации!'), 0);
+        PChar('РћС€РёР±РєР° Р°РІС‚РѕСЂРёР·Р°С†РёРё!'), 0);
     end;
   end;
   SendMessage(LauncherForm.Handle, LM_AUTH_STATE_CHANGED, 0, 0);
