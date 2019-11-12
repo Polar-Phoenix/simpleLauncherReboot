@@ -179,10 +179,10 @@ var
   Hash: String;
 begin
   Result := True;
-  if not FileExists(Path) then // Не существует - не валидна
+  if not FileExists(Path) then // РќРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚ - РЅРµ РІР°Р»РёРґРЅР°
     Exit(False);
-  if IsValidHash(Hash) then // Если есть верный хэш...
-    if GetSHA1(Path) <> Hash then // Хэш не совпадает - не валидна!
+  if IsValidHash(Hash) then // Р•СЃР»Рё РµСЃС‚СЊ РІРµСЂРЅС‹Р№ С…СЌС€...
+    if GetSHA1(Path) <> Hash then // РҐСЌС€ РЅРµ СЃРѕРІРїР°РґР°РµС‚ - РЅРµ РІР°Р»РёРґРЅР°!
       Exit(False);
 end;
 
@@ -206,14 +206,14 @@ begin
       FreeAndNil(HashStream);
     end;
   except
-    Exit(False); // Не существует - не валиден
+    Exit(False); // РќРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚ - РЅРµ РІР°Р»РёРґРµРЅ
   end;
 
   if Hash = '' then
     Valid := False
   else
     for I := 1 to Length(Hash) do
-      Valid := Valid and CharInSet(Hash[I], Valids); // Неверные символы - ясно
+      Valid := Valid and CharInSet(Hash[I], Valids); // РќРµРІРµСЂРЅС‹Рµ СЃРёРјРІРѕР»С‹ - СЏСЃРЅРѕ
 
   Result := Valid;
 
