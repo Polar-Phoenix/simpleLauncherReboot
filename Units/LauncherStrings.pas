@@ -2,6 +2,8 @@
 
 unit LauncherStrings;
 
+{$MODE Delphi}
+
 interface
 
 const
@@ -96,7 +98,7 @@ function LauncherVersionString: String;
 implementation
 
 uses
-  SysUtils, Windows;
+  SysUtils, LCLIntf, LCLType, LMessages;
 
 type
   TVersionInfo = packed record

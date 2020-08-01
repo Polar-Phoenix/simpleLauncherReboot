@@ -1,10 +1,12 @@
 unit VersionEditorForm;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Vcl.Forms, Vcl.StdCtrls, SuperObject, LauncherPaths, Vcl.Controls,
-  System.Classes;
+  {Vcl.Forms, Vcl.StdCtrls,} SuperObject, LauncherPaths, LCLIntf{, Vcl.Controls,
+  System.Classes};
 
 type
   TFm_VersionEditor = class(TForm)
@@ -41,13 +43,13 @@ var
 implementation
 
 uses
-  SysUtils, ShellApi, BaseUtils;
+  SysUtils, BaseUtils;
 
-{$R *.dfm}
+{$R *.lfm}
 
 procedure TFm_VersionEditor.Bt_OpenVersionsFolderClick(Sender: TObject);
 begin
-  ShellExecute(0, 'Explore', PWideChar(Paths.Versions), nil, nil, 5);
+   OpenDocument(PWideChar(Paths.Versions)); { *Преобразовано из ShellExecute* }
 end;
 
 function IsValidVersionName(const S: string): Boolean;

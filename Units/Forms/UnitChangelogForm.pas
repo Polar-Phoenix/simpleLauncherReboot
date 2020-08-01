@@ -1,9 +1,13 @@
 unit UnitChangelogForm;
 
+{$MODE Delphi}
+
 interface
 
-uses
-  Vcl.Forms, Vcl.StdCtrls, System.Classes, Vcl.Controls;
+uses StdCtrls,Forms,Classes,Controls;
+
+{uses
+  Vcl.Forms, Vcl.StdCtrls, System.Classes, Vcl.Controls;}
 
 type
   TChangelogForm = class(TForm)
@@ -15,6 +19,6 @@ var
 
 implementation
 
-{$R *.dfm}
+{$R *.lfm}
 
 end.

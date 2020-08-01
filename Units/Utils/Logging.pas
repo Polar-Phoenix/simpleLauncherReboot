@@ -1,5 +1,7 @@
 unit Logging;
 
+{$MODE Delphi}
+
 interface
 
 uses
@@ -23,7 +25,7 @@ procedure LogF(const Msg: string; Args: array of const;
 implementation
 
 uses
-  Windows, UnitLauncherForm, SyncObjs;
+  LCLIntf, LCLType, LMessages, UnitLauncherForm, SyncObjs;
 
 var
   LogCritSection: TCriticalSection;

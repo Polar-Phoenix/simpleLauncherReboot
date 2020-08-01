@@ -1,5 +1,7 @@
 unit TypeTAssetsValidator;
 
+{$MODE Delphi}
+
 interface
 
 uses

@@ -81,7 +81,7 @@
 {$DEFINE WINDOWSNT_COMPATIBILITY}
 {.$DEFINE DEBUG} // track memory leack
 
-unit superobject;
+unit SuperObject;
 
 interface
 uses
@@ -610,9 +610,9 @@ type
     function GetDataPtr: Pointer;
     procedure SetDataPtr(const Value: Pointer);
   protected
-    function QueryInterface(const IID: TGUID; out Obj): HResult; virtual; stdcall;
-    function _AddRef: Integer; virtual; stdcall;
-    function _Release: Integer; virtual; stdcall;
+    function QueryInterface({$IFDEF FPC_HAS_CONSTREF}constref{$ELSE}const{$ENDIF} IID: TGUID; out Obj): HResult; virtual; {$IFDEF WINDOWS}stdcall;{$ELSE}CDECL{$ENDIF};
+    function _AddRef: Integer; virtual; {$IFDEF WINDOWS}stdcall;{$ELSE}CDECL{$ENDIF};
+    function _Release: Integer; virtual; {$IFDEF WINDOWS}stdcall;{$ELSE}CDECL{$ENDIF};
 
     function GetO(const path: SOString): ISuperObject;
     procedure PutO(const path: SOString; const Value: ISuperObject);
@@ -1233,11 +1233,11 @@ end;
 {$ELSE}
 function TzSpecificLocalTimeToSystemTime(
   lpTimeZoneInformation: PTimeZoneInformation;
-  lpLocalTime, lpUniversalTime: PSystemTime): BOOL; stdcall; external 'kernel32.dll';
+  lpLocalTime, lpUniversalTime: PSystemTime): BOOL; {$IFDEF WINDOWS}stdcall;{$ELSE}CDECL{$ENDIF}; external 'kernel32.dll';
 
 function SystemTimeToTzSpecificLocalTime(
   lpTimeZoneInformation: PTimeZoneInformation;
-  lpUniversalTime, lpLocalTime: PSystemTime): BOOL; stdcall; external 'kernel32.dll';
+  lpUniversalTime, lpLocalTime: PSystemTime): BOOL; {$IFDEF WINDOWS}stdcall;{$ELSE}CDECL{$ENDIF}; external 'kernel32.dll';
 {$ENDIF}
 
 function JavaToDelphiDateTime(const dt: int64): TDateTime;

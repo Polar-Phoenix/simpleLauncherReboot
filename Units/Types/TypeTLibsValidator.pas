@@ -1,5 +1,7 @@
 unit TypeTLibsValidator;
 
+{$MODE Delphi}
+
 interface
 
 uses

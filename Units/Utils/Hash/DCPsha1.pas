@@ -24,6 +24,8 @@
 {******************************************************************************}
 unit DCPsha1;
 
+{$MODE Delphi}
+
 interface
 uses
   Classes, Sysutils, DCPcrypt2, DCPconst;

@@ -1,13 +1,18 @@
 unit SettingsForm;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, LauncherPaths,
-  LauncherSettings, Vcl.Controls, Vcl.Themes, Vcl.ExtCtrls,
-  LauncherStrings, Vcl.ComCtrls, System.Classes;
+  {Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,} LauncherPaths,
+  LauncherSettings, {Vcl.Controls, Vcl.Themes, Vcl.ExtCtrls,}
+  LauncherStrings, LCLIntf{, Vcl.ComCtrls, System.Classes}, Classes;
 
 type
+
+  { TFm_Settings }
+
   TFm_Settings = class(TForm)
     GroupBoxVisibility: TGroupBox;
     GroupBoxValidation: TGroupBox;
@@ -60,6 +65,7 @@ type
     procedure CheckBoxDontValidAssetsClick(Sender: TObject);
     procedure CheckBoxDebugClick(Sender: TObject);
     procedure ComboBoxThemeSelect(Sender: TObject);
+    procedure PageControlMainChange(Sender: TObject);
     procedure RadioGroupEditorActionClick(Sender: TObject);
     procedure EditCustStylePathChange(Sender: TObject);
     procedure CheckBoxUseCustStylesClick(Sender: TObject);
@@ -78,9 +84,9 @@ var
 implementation
 
 uses
-  SysUtils, System.UITypes, ShellApi, BaseUtils;
+  SysUtils, System.UITypes, BaseUtils;
 
-{$R *.dfm}
+{$R *.lfm}
 
 procedure LoadAdditionalSettings;
 begin
@@ -137,7 +143,7 @@ end;
 
 procedure TFm_Settings.ButtonOpenFolderClick(Sender: TObject);
 begin
-  ShellExecute(Handle, 'Explore', PChar(Paths.Settings), nil, nil, 1);
+   OpenDocument(PChar(Paths.Settings)); { *Преобразовано из ShellExecute* }
 end;
 
 procedure TFm_Settings.ButtonPDeleteClick(Sender: TObject);
@@ -290,6 +296,11 @@ begin
     2: TStyleManager.TrySetStyle('Windows', True);
   end;
   Settings.Global.I['ThemeIndex'] := ComboBoxTheme.ItemIndex;
+end;
+
+procedure TFm_Settings.PageControlMainChange(Sender: TObject);
+begin
+
 end;
 
 procedure TFm_Settings.ComboBoxVisibilityClick(Sender: TObject);

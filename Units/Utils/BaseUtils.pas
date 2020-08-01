@@ -1,9 +1,11 @@
-﻿unit BaseUtils;
+unit BaseUtils;
+
+{$MODE Delphi}
 
 interface
 
 uses
-  Windows, Classes, SuperObject;
+  LCLIntf, LCLType, LMessages, Classes, SuperObject;
 
 type
   PSuperObject = ^ISuperObject;
@@ -144,7 +146,7 @@ procedure StartThread(const Proc: TFNThreadStartRoutine; const Name: String = 'U
 var
   ThreadId: Cardinal;
 begin
-  CloseHandle(CreateThread(nil, 0, Proc, nil, 0, ThreadId));
+  FileClose(CreateThread(nil, 0, Proc, nil, 0, ThreadId)); { *Преобразовано из CloseHandle* }
   Log('Started thread "' + Name + '" id ' + ThreadId.ToString);
 end;
 

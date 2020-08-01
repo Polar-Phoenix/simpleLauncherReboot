@@ -1,5 +1,7 @@
 unit LaunchCommand;
 
+{$MODE Delphi}
+
 interface
 
 uses
@@ -21,7 +23,7 @@ function GetLaunchCommand(Options: TCommandOptions): string;
 implementation
 
 uses
-  SysUtils, TypeTMinecraftLib, BaseUtils, LauncherPaths, Windows, AuthUnit,
+  SysUtils, TypeTMinecraftLib, BaseUtils, LauncherPaths, LCLIntf, LCLType, LMessages, AuthUnit,
   LauncherSettings, UnitLauncherForm, NickValidator;
 
 function Spaces(const S: string): string;

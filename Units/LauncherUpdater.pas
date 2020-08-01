@@ -1,5 +1,7 @@
 unit LauncherUpdater;
 
+{$MODE Delphi}
+
 interface
 
 procedure CheckForLauncherUpdates(AShowMessages: Boolean);
@@ -7,7 +9,7 @@ procedure CheckForLauncherUpdates(AShowMessages: Boolean);
 implementation
 
 uses
-  Windows, SysUtils, BaseUtils, Downloader, LauncherStrings, UnitUpdaterForm,
+  LCLIntf, LCLType, LMessages, SysUtils, BaseUtils, Downloader, LauncherStrings, UnitUpdaterForm,
   SuperObject, Logging, UnitLauncherForm;
 
 var

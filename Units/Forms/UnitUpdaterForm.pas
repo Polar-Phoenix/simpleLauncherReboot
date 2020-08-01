@@ -1,10 +1,12 @@
 unit UnitUpdaterForm;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Messages, SysUtils, System.Classes,
-  Vcl.Controls, Vcl.Forms,  Vcl.StdCtrls, Vcl.ComCtrls,
+  Messages, SysUtils, {System.Classes,
+  Vcl.Controls, Vcl.Forms,  Vcl.StdCtrls, Vcl.ComCtrls,}
   SuperObject;
 
 type
@@ -37,11 +39,11 @@ var
 implementation
 
 uses
-  Windows, ShellApi, Dialogs,
+  LCLIntf, LCLType, LMessages, Dialogs,
   FWZipReader,
   UnitChangelogForm, BaseUtils, Downloader, LauncherPaths, updater_exe;
 
-{$R *.dfm}
+{$R *.lfm}
 
 procedure DownloadNewLauncher;
 var
@@ -97,7 +99,7 @@ begin
   Path := Paths.Updates + 'updater.exe';
   CmdString := '--replace "' + Paths.Updates + 'simpleLauncher.exe" "' + ParamStr(0) + '"';
 
-  ShellExecute(0, 'Open', PChar(Path), PChar(CmdString), PChar(Paths.Updates), 5);
+   OpenDocument(PChar(Path)); { *Преобразовано из ShellExecute* }
 end;
 
 procedure TUpdaterForm.ButtonDownloadClick(Sender: TObject);

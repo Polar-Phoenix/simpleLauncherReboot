@@ -1,4 +1,7 @@
 unit LauncherPaths;
+
+{$MODE Delphi}
+
 (*
  *  Пути к клиенту, настройкам и appdata
  *  Написано для simpleLauncher

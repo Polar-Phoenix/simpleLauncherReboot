@@ -1,16 +1,18 @@
-﻿unit UnitLauncherForm;
+unit UnitLauncherForm;
+
+{$MODE Delphi}
 
 interface
 
 uses
   // Windows
-  Windows, Messages,
+  LCLIntf, LCLType, LMessages, Messages,
   // System
-  System.SysUtils, System.Classes,
+  {System.SysUtils, System.Classes,
   // VCL
   Vcl.Forms, Vcl.Controls, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.ExtCtrls,
   Vcl.Buttons, Vcl.Menus, Vcl.Dialogs, Vcl.Themes, Vcl.Imaging.pngimage,
-  Vcl.Imaging.jpeg,
+  Vcl.Imaging.jpeg,}
   // Свои модули
   SuperObject;
 
@@ -243,7 +245,7 @@ implementation
 
 uses
   // Система, IDE
-  System.UITypes, ShellApi,
+  System.UITypes,
   // Потоки
   UnitRemoteRefresherThread, UnitLauncherThread, UnitMinecraftListenerThread,
   // Формы
@@ -258,7 +260,7 @@ uses
   VersionsManagerClass, PipesAPI, BrowseDirectory, NickValidator,
   UnitCaptionChangerThread;
 
-{$R *.dfm}
+{$R *.lfm}
 
 {$REGION 'Misc Procedures'}
 
@@ -606,7 +608,7 @@ end;
 
 procedure TLauncherForm.LauncherLogoClick(Sender: TObject);
 begin
-  ShellExecute(0, nil, PChar('http://vk.com/simplelauncher'), nil, nil, 1);
+  OpenURL(PChar('http://vk.com/simplelauncher')); { *Преобразовано из ShellExecute* }
   Inc(UsageStatistics.PageLinkClickedTimes);
 end;
 
@@ -782,7 +784,7 @@ procedure TLauncherForm.OpenAdsSite(Sender: TObject);
 begin
   if Ads.CurrentLink <> '' then
   begin
-    ShellExecute(0, 'Open', PWideChar(Ads.CurrentLink), nil, nil, 5);
+     OpenDocument(PWideChar(Ads.CurrentLink)); { *Преобразовано из ShellExecute* }
     Inc(UsageStatistics.AdsClickedTimes);
   end;
 end;
@@ -991,7 +993,7 @@ end;
 procedure TLauncherForm.CopyrightsLinkLabelLinkClick(Sender: TObject;
   const Link: string; LinkType: TSysLinkType);
 begin
-  ShellExecute(0, nil, PWideChar(Link), nil, nil, SW_SHOWNORMAL);
+   OpenDocument(PWideChar(Link)); { *Преобразовано из ShellExecute* }
 end;
 
 procedure TLauncherForm.MCHeightEditChange(Sender: TObject);
@@ -1080,7 +1082,7 @@ procedure TLauncherForm.LinksLabelLinkClick(Sender: TObject; const Link: string;
   LinkType: TSysLinkType);
 begin
     if Link = 'http://vk.com/simplelauncher' then Inc(UsageStatistics.PageLinkClickedTimes);
-  ShellExecute(0, 'Open', PWideChar(Link), nil, nil, 5);
+   OpenDocument(PWideChar(Link)); { *Преобразовано из ShellExecute* }
 end;
 
 procedure TLauncherForm.LoginPageControlChange(Sender: TObject);
@@ -1289,7 +1291,7 @@ end;
 
 procedure TLauncherForm.OpenClient(Sender: TObject);
 begin
-  ShellExecute(Handle, 'Explore', PWideChar(Paths.Client), nil, nil, 1);
+   OpenDocument(PWideChar(Paths.Client)); { *Преобразовано из ShellExecute* }
 end;
 
 procedure TLauncherForm.SetCustomStyle;

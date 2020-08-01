@@ -1,5 +1,7 @@
 unit Downloader;
 
+{$MODE Delphi}
+
 interface
 
 uses
@@ -28,7 +30,7 @@ function GetInternetString(const URL: String): String;
 implementation
 
 uses
-  LauncherStrings, SysUtils, Exceptions, Windows, WinInet;
+  LauncherStrings, SysUtils, Exceptions, LCLIntf, LCLType, LMessages{, WinInet};
 
 function SetOnline: Boolean;
 var

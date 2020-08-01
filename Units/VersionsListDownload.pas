@@ -1,5 +1,7 @@
 unit VersionsListDownload;
 
+{$MODE Delphi}
+
 interface
 
 uses
@@ -10,7 +12,7 @@ function GetRemoteVersionsList: TMinecraftVersions;
 implementation
 
 uses
-  SysUtils, Classes, Windows,
+  SysUtils, Classes, LCLIntf, LCLType, LMessages,
   SuperObject,
   UnitLauncherForm,
   LauncherStrings, LauncherPaths, LauncherURLs, Downloader, Logging, Exceptions,

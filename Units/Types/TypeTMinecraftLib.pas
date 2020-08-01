@@ -1,5 +1,7 @@
 unit TypeTMinecraftLib;
 
+{$MODE Delphi}
+
 interface
 
 uses
@@ -38,7 +40,7 @@ implementation
 
 uses
   SysUtils, Classes, BaseUtils, LauncherPaths, FWZipReader, Logging,
-  Windows;
+  LCLIntf, LCLType, LMessages;
 
 function Is64BitWindows: Boolean;
 var

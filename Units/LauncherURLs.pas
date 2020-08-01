@@ -1,5 +1,7 @@
 unit LauncherURLs;
 
+{$MODE Delphi}
+
 interface
 
 type

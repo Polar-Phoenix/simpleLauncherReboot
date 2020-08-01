@@ -1,5 +1,7 @@
 unit LauncherSettings;
 
+{$MODE Delphi}
+
 interface
 
 uses

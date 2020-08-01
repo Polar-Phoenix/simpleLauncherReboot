@@ -1,5 +1,7 @@
 unit MinecraftDownload;
 
+{$MODE Delphi}
+
 interface
 
 uses

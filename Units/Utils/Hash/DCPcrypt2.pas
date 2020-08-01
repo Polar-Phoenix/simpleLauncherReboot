@@ -24,6 +24,8 @@
 {******************************************************************************}
 unit DCPcrypt2;
 
+{$MODE Delphi}
+
 interface
 uses
   Classes, Sysutils, DCPconst, DCPbase64;

@@ -1,5 +1,7 @@
 unit UnitRemoteRefresherThread;
 
+{$MODE Delphi}
+
 interface
 
 procedure RefreshRemoteVersionsList;
@@ -7,7 +9,7 @@ procedure RefreshRemoteVersionsList;
 implementation
 
 uses
-  TypeTMinecraftVersions, VersionsListDownload, UnitLauncherForm, Windows,
+  TypeTMinecraftVersions, VersionsListDownload, UnitLauncherForm, LCLIntf, LCLType, LMessages,
   BaseUtils;
 
 procedure SendRemoteVersionsList;
