@@ -6,7 +6,7 @@ interface
 
 uses
   // Windows
-  LCLIntf, LCLType, LMessages, Messages,
+  LCLIntf, LCLType, LMessages, Messages,StdCtrls,Forms,comctrls,buttons,menus,extctrls,
   // System
   {System.SysUtils, System.Classes,
   // VCL
@@ -14,7 +14,7 @@ uses
   Vcl.Buttons, Vcl.Menus, Vcl.Dialogs, Vcl.Themes, Vcl.Imaging.pngimage,
   Vcl.Imaging.jpeg,}
   // Свои модули
-  SuperObject;
+  superobject;
 
 const
   // LM = Launcher Message
@@ -38,7 +38,7 @@ type
     {$REGION 'Fields'}
     AboutTabSheet: TTabSheet;
     AdsGroupBox: TGroupBox;
-    AdsImage: TImage;
+ // AdsImage: TImage;                   //Disabled, cause no need of it for now
     AllAlphas: TComboBox;
     AllBetas: TComboBox;
     AllReleases: TComboBox;
@@ -123,13 +123,13 @@ type
     LogoutButton: TButton;
     NickLabel: TLabel;
     AuthStatusLabel: TLabel;
-    CopyrightsLinkLabel: TLinkLabel;
+ // CopyrightsLinkLabel: TLinkLabel;             { TODO 1 -oPolar_Phoenix -cLib Replacement : Find TLinkLabel replacement in LCL }
     EditorMenu_Copy: TMenuItem;
     NickDeleteButton: TButton;
-    LinksLabel: TLinkLabel;
+ // LinksLabel: TLinkLabel;                      { TODO 1 -oPolar_Phoenix -cLib Replacement : Find Replacment for TLinkLabel in LCL }
     ShowNewReleasesCheckBox: TCheckBox;
     ShowNewSnapshotsCheckBox: TCheckBox;
-    NicksBalloonHint: TBalloonHint;
+ // NicksBalloonHint: TBalloonHint;               { TODO 1 -oPolar_Phoenix -cLib Replacement : Find Replacement for TBaloonHint, maybe TPopUp will work }
     EnabledAssets: TListBox;
     DisabledAssets: TListBox;
     AssetsMenu_SelectAll: TMenuItem;
@@ -190,13 +190,13 @@ type
     procedure AuthButtonClick(Sender: TObject);
     procedure LoginPageControlChange(Sender: TObject);
     procedure LogoutButtonClick(Sender: TObject);
-    procedure CopyrightsLinkLabelLinkClick(Sender: TObject; const Link: string;
-      LinkType: TSysLinkType);
+ // procedure CopyrightsLinkLabelLinkClick(Sender: TObject; const Link: string;
+ //   LinkType: TSysLinkType);      { TODO 1 -oPolar_Phoenix -cLib Replacement : TLink Problem }
     procedure EditorMenu_CopyClick(Sender: TObject);
     procedure VersionsComboListDropDown(Sender: TObject);
     procedure PageControlChange(Sender: TObject);
-    procedure LinksLabelLinkClick(Sender: TObject; const Link: string;
-      LinkType: TSysLinkType);
+ // procedure LinksLabelLinkClick(Sender: TObject; const Link: string;
+ //   LinkType: TSysLinkType);      { TODO 1 -oPolarPhoenix -cLib Replacement : TLink Problem }
     procedure LauncherLogoClick(Sender: TObject);
     procedure AutoRemoteRefreshCheckBoxClick(Sender: TObject);
     procedure NicksListKeyPress(Sender: TObject; var Key: Char);

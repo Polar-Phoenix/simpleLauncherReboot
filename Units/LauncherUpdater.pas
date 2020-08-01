@@ -10,7 +10,7 @@ implementation
 
 uses
   LCLIntf, LCLType, LMessages, SysUtils, BaseUtils, Downloader, LauncherStrings, UnitUpdaterForm,
-  SuperObject, Logging, UnitLauncherForm;
+  superobject, Logging, UnitLauncherForm;
 
 var
   ShowMessages: Boolean;
