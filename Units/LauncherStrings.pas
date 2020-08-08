@@ -115,7 +115,7 @@ begin
   // Инициализация
   FillChar(Result, SizeOf(Result), #0);
   Handle := 0;
-
+ {$IFDEF WINDOWS}
   VerInfoSize := GetFileVersionInfoSize(PChar(ParamStr(0)), VerInfoSize);
   if VerInfoSize <> 0 then
   begin
@@ -139,7 +139,9 @@ begin
       'Не могу получить информацию о версии! Ты трогал екзешник?'#10#10 +
       'Убедись, что ты скачал версию с официального сайта simplelauncher.ru'
     );
+  {$ENDIF}
 end;
+
 
 function LauncherVersionCode: Word;
 var

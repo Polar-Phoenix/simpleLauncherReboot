@@ -160,7 +160,7 @@ type
     procedure MCWidthEditChange(Sender: TObject);
     procedure EditVersion(Sender: TObject);
     procedure EditVersionFromEditor(Sender: TObject);
-    procedure FoundedVersion(Obj: ISuperObject);
+ // procedure FoundedVersion(Obj: ISuperObject);       //temp disabled
     procedure LauncherThreadExit(Sender: TObject);
     procedure LaunchMinecraft(Sender: TObject);
     procedure LauncherCloseQuery(Sender: TObject; var CanClose: Boolean);
